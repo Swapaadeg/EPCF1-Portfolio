@@ -436,9 +436,9 @@ main {
 .carousel__wrapper .card {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
   padding: 1.5rem;
   border: 2px solid #0D324D;
+  border-bottom: none;
   border-radius: 12px;
 }
 .carousel__wrapper .card img {

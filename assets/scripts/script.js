@@ -149,7 +149,7 @@ window.addEventListener('resize', updateTardisLink);
 
 
 
-//La navbar est active
+//La navbar réagit à la section
 const sections = document.querySelectorAll('section[id*="wrapper"]');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -166,7 +166,7 @@ const observer = new IntersectionObserver((entries) => {
 }, {
   root: null,
   rootMargin: '0px',
-  threshold: 0.6
+  threshold: 0.5
 });
 
 sections.forEach(section => {

@@ -41,9 +41,9 @@ main {
     .card {
         display: flex;
         gap: 2rem;
-        margin-bottom: 2rem;
         padding: 1.5rem;
         border: 2px solid variable.$color-primary;
+        border-bottom: none;
         border-radius: 12px;
         img {
             width: 50%;
@@ -211,7 +211,6 @@ main {
     }
 }
 
-
 //RESPONSIVE
 @media screen and (max-width:1000px) {
     main {
@@ -244,5 +243,3 @@ main {
         grid-column: 1;
     }
 }
-
-  
