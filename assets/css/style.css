@@ -634,8 +634,11 @@ main {
   align-items: center;
   border: #0D324D 2px solid;
   border-radius: 50%;
-  padding: 0 3rem;
+  padding: 2rem;
   justify-content: center;
+  aspect-ratio: 1;
+  min-width: 250px;
+  min-height: 250px;
 }
 .experience__wrapper .experience__grid .formation p {
   margin: 0;
