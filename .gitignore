@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+*.temp
+messages.txt
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeur / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de build
+dist/
+build/
+*.min.css.map
+*.min.js.map
+
+# Environnement
+.env
+.env.local
+
+# Dossiers de slides (si tu ne veux pas les versionner)
+Portfolio slides/
+
+# OneDrive
+*.lnk
