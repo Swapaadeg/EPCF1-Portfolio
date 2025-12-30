@@ -1,0 +1,73 @@
+# Désactiver le listing des répertoires (corrige le problème "Index of /")
+Options -Indexes
+
+# Activer la réécriture d'URL
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Forcer HTTPS (une fois en production)
+    # Décommenter ces lignes après avoir testé que tout fonctionne
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Rediriger vers index.html si le fichier n'existe pas
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.html [L]
+</IfModule>
+
+# Configuration du fuseau horaire
+php_value date.timezone "Europe/Paris"
+
+# Limiter la taille des uploads (ajuster selon tes besoins)
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+# Sécurité : désactiver l'affichage des erreurs PHP en production
+php_flag display_errors Off
+php_flag display_startup_errors Off
+php_value error_reporting 0
+
+# Protéger les fichiers sensibles
+<FilesMatch "^(messages\.txt|\.env|\.git.*|composer\.(json|lock)|package\.json|README\.md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Activer la compression gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control pour les ressources statiques
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# Configuration de sécurité supplémentaire
+<IfModule mod_headers.c>
+    # Protection XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Empêcher le MIME-sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Protection contre les clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Content Security Policy (à ajuster selon tes besoins)
+    Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://kit.fontawesome.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com; img-src 'self' data: https:;"
+</IfModule>
+
+# Page d'erreur personnalisée (optionnel - créer ces pages si besoin)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html

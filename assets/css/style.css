@@ -421,54 +421,148 @@ main {
   transform: scale(1.1);
 }
 
-.carousel__wrapper {
-  overflow: hidden;
+.projets__carousel {
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
-.carousel__wrapper .carousel {
+  gap: 1.5rem;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.4s ease;
-}
-.carousel__wrapper .card {
-  display: flex;
-  gap: 2rem;
-  padding: 1.5rem;
-  border: 2px solid #0D324D;
-  border-bottom: none;
-  border-radius: 12px;
-}
-.carousel__wrapper .card img {
-  width: 50%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-}
-.carousel__wrapper .card .projets__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.carousel__wrapper .card .projets__content .title {
-  font-family: "poppins bold";
-}
-.carousel__wrapper .card .projets__content .langages {
-  display: flex;
-  gap: 1rem;
-}
-.carousel__wrapper .card .projets__content .langages .langage {
-  background: #0D324D;
-  color: #7F5A83;
-  padding: 10px 20px;
-  border-radius: 1rem;
-}
-.carousel__wrapper .card:last-child {
-  margin-bottom: 0;
 }
 
+.carousel-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #7F5A83;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #7F5A83;
+  transition: all 0.3s ease;
+}
+.carousel-btn:hover {
+  background: #7F5A83;
+  color: #020202;
+  transform: scale(1.1);
+}
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-track {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(13, 50, 77, 0.3);
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 2px solid #0D324D;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(127, 90, 131, 0.05), rgba(13, 50, 77, 0.1));
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.card:hover {
+  border-color: #7F5A83;
+  box-shadow: inset 0 0 0 1px #7F5A83, 0 8px 16px rgba(127, 90, 131, 0.15);
+}
+.card img {
+  width: 45%;
+  height: auto;
+  min-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.card .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.card .card-content h4 {
+  font-family: "poppins bold";
+  font-size: 1.4rem;
+  color: #A188A6;
+  margin: 0 0 0.5rem 0;
+}
+.card .card-content p {
+  color: #9DA2AB;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+.card .card-content .card-tags {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.card .card-content .tag {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: #0D324D;
+  color: #7F5A83;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1000px) {
+  .projets__carousel {
+    flex-direction: column;
+  }
+  .carousel-btn {
+    order: 2;
+    align-self: center;
+    margin-top: 1rem;
+  }
+  .carousel-track {
+    order: 1;
+    width: 100%;
+  }
+  .card {
+    flex-direction: column;
+  }
+  .card img {
+    width: 100%;
+    height: 250px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .card {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .card h4 {
+    font-size: 1.2rem;
+  }
+  .card img {
+    height: 200px;
+  }
+}
 .experience__wrapper h3 {
   margin-bottom: 6rem;
 }

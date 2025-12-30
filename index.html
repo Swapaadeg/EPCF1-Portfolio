@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio de Marie Rivier - SwapDevStudio, développeuse full stack spécialisée en création de sites web modernes et applications. Découvrez mes projets et compétences.">
+    <meta name="keywords" content="développeuse full stack, web developer, portfolio, Marie Rivier, SwapDevStudio, création site web, développement web">
+    <meta name="author" content="Marie Rivier">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marie-rivier.com/">
+    <meta property="og:title" content="Marie Rivier - Portfolio Développeuse Full Stack">
+    <meta property="og:description" content="Découvrez mon portfolio de développeuse full stack. Projets web, compétences et expériences professionnelles.">
+    <meta property="og:image" content="https://marie-rivier.com/assets/img/image0.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://marie-rivier.com/">
+    <meta property="twitter:title" content="Marie Rivier - Portfolio Développeuse Full Stack">
+    <meta property="twitter:description" content="Découvrez mon portfolio de développeuse full stack. Projets web, compétences et expériences professionnelles.">
+    <meta property="twitter:image" content="https://marie-rivier.com/assets/img/image0.png">
+    
+    <!-- Styles and Scripts -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/lib/all.min.css">
     <script src="https://kit.fontawesome.com/84a235b10e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="assets/img/favicon-96x96.png" sizes="96x96"/>
-    <title>Portfolio</title>
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#7F5A83">
+    
+    <title>Marie Rivier - Portfolio Développeuse Full Stack | SwapDevStudio</title>
 </head>
 <body class="container">
     <!-- Header -->
@@ -24,7 +50,7 @@
                             </div>
                         </div>
                         <div class="header__text">
-                            <h1>Marie Rivier</h1>
+                            <h1>SwapDevStudio</h1>
                             <h2>Full stack développeuse</h2>
                             <p class="citation">"Elle tisse le web comme on tisse une toile de rêves — pixel par pixel, ligne par ligne."</p>
                         </div>
@@ -59,112 +85,122 @@
         <!--Projets-->
         <section id="projets__wrapper container">
             <h3>Projets</h3>
-            <div class="carousel__btn">
-                <button class="prev"><i class="fa-solid fa-caret-up"></i></button>
-            </div>
-            <div class="carousel__wrapper">
-                <div class="carousel">
-                    <!--BG3-->
-                    <div class="card projets__bg3">
-                        <img src="assets/img/BG3.PNG" alt="Bannière du site bg3 réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Baldur Gate 3</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Css</p>
-                                <p class="langage">Html</p>
-                            </div>
+            <div class="projets__carousel">
+                <button class="carousel-btn carousel-btn--prev" aria-label="Projet précédent">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="carousel-track">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Baldur Gate 3">
+                                <img src="assets/img/BG3.PNG" alt="Baldur Gate 3">
+                                <div class="card-content">
+                                    <h4>Baldur Gate 3</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--T-Virus-->
-                    <div class="card projets__t-virus">
-                        <img src="assets/img/T-virus.PNG" alt="Bannière du site T-virus réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">T-Virus</p>
-                            <p>Projet effectué lors de la formation Talis en groupe de 3</p>
-                            <div class="langages">
-                                <p class="langage">Css</p>
-                                <p class="langage">Git</p>
-                                <p class="langage">JS</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet T-Virus">
+                                <img src="assets/img/T-virus.PNG" alt="T-Virus">
+                                <div class="card-content">
+                                    <h4>T-Virus</h4>
+                                    <p>Projet effectué lors de la formation Talis en groupe de 3</p>
+                                    <div class="card-tags">
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">Git</span>
+                                        <span class="tag">JS</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Gaming Campus-->
-                    <div class="card projets__gaming-campus">
-                        <img src="assets/img/gaming-campus.PNG" alt="Bannière du site Gaming Campus réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Gaming Campus</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Tailwind</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Gaming Campus">
+                                <img src="assets/img/gaming-campus.PNG" alt="Gaming Campus">
+                                <div class="card-content">
+                                    <h4>Gaming Campus</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">Tailwind</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Green Earth-->
-                    <div class="card projets__green-earth">
-                        <img src="assets/img/Green-earth.PNG" alt="Bannière du site Green-earth réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Green Earth</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Scss</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Green Earth">
+                                <img src="assets/img/Green-earth.PNG" alt="Green Earth">
+                                <div class="card-content">
+                                    <h4>Green Earth</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">SCSS</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Le resto-->
-                    <div class="card projets__resto">
-                        <img src="assets/img/Le-resto.PNG" alt="Bannière du site Le Resto réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Le resto</p>
-                            <p>Projet effectué lors de la formation Talis, en construction</p>
-                            <div class="langages">
-                                <p class="langage">Scss</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Le Resto">
+                                <img src="assets/img/Le-resto.PNG" alt="Le Resto">
+                                <div class="card-content">
+                                    <h4>Le Resto</h4>
+                                    <p>Projet effectué lors de la formation Talis, en construction</p>
+                                    <div class="card-tags">
+                                        <span class="tag">SCSS</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Peps-->
-                    <div class="card projets__peps">
-                        <img src="assets/img/peps.PNG" alt="Bannière du site Pep's coaching réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Pep's Coaching</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Css</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Pep's Coaching">
+                                <img src="assets/img/peps.PNG" alt="Pep's Coaching">
+                                <div class="card-content">
+                                    <h4>Pep's Coaching</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Tinker-->
-                    <div class="card projets__Tinker">
-                        <img src="assets/img/tinker.PNG" alt="Bannière du site Tinker réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Tinker</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Tailwind</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Tinker">
+                                <img src="assets/img/tinker.PNG" alt="Tinker">
+                                <div class="card-content">
+                                    <h4>Tinker</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">Tailwind</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <!--Travel Together-->
-                    <div class="card projets__travel">
-                        <img src="assets/img/Travel together.PNG" alt="Bannière du site Travel Together réalisé en formation">
-                        <div class="projets__content">
-                            <p class="title">Travel Together</p>
-                            <p>Projet effectué lors de la formation Talis</p>
-                            <div class="langages">
-                                <p class="langage">Scss</p>
-                                <p class="langage">Html</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <a href="#" class="card" title="Voir le projet Travel Together">
+                                <img src="assets/img/Travel together.PNG" alt="Travel Together">
+                                <div class="card-content">
+                                    <h4>Travel Together</h4>
+                                    <p>Projet effectué lors de la formation Talis</p>
+                                    <div class="card-tags">
+                                        <span class="tag">SCSS</span>
+                                        <span class="tag">HTML</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel__btn">
-                <button class="next"><i class="fa-solid fa-caret-down"></i></button>
+                <button class="carousel-btn carousel-btn--next" aria-label="Projet suivant">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </section>
 
@@ -177,7 +213,13 @@
                     <div class="backend">
                         <div class="backend__text">
                             <p class="experience__p">Backend</p>
-                            <ul><li>A venir !</li></ul>
+                            <ul>
+                                <li>PHP</li>
+                                <li>Symfony</li>
+                                <li>MySQL / PostgreSQL</li>
+                                <li>API REST</li>
+                                <li>Doctrine ORM</li>
+                            </ul>
                         </div>
                         <div class="circle__img">
                             <img src="assets/img/pexels-pixabay-414860.jpg" alt="Image pour représenter de façon conceptuelle le Backend">
@@ -257,7 +299,7 @@
                 <div class="footer__credit">
                     <p>© Copyright 2025</p>
                     <span class="separator"></span>
-                    <p>Marie Rivier</p>
+                    <p>SwapDevStudio</p>
                     <a href="#" class="tardis-scroll" id="tardisScroll">
                         <img src="assets/img/pngegg.png" alt="Retour en haut grâce au Tardis">
                       </a>
@@ -266,5 +308,6 @@
         </footer>
         <div class="cursor-light"></div>
 </body>
+<script src="assets/scripts/carousel.js"></script>
 <script src="assets/scripts/script.js"></script>
 </html> 

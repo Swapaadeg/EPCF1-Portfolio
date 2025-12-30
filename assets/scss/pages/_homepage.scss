@@ -26,54 +26,168 @@ main {
     }
 }
 
-//Caroussel
-.carousel__wrapper {
-    overflow: hidden;
+//=== CAROUSEL MODERNE HORIZONTAL ===
+.projets__carousel {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    .carousel {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.4s ease;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.carousel-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: 2px solid variable.$color-accent;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: variable.$color-accent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: variable.$color-accent;
+        color: variable.$color-bg;
+        transform: scale(1.1);
     }
-    .card {
-        display: flex;
-        gap: 2rem;
-        padding: 1.5rem;
-        border: 2px solid variable.$color-primary;
-        border-bottom: none;
-        border-radius: 12px;
-        img {
-            width: 50%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-        .projets__content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            .title {
-                font-family: variable.$font-bold;
-            }
-            .langages {
-                display: flex;
-                gap: 1rem;
-                .langage {
-                    background: variable.$color-primary;
-                    color: variable.$color-accent;
-                    padding: 10px 20px;
-                    border-radius: 1rem;
-                }
-            }
-        }
-    }
-    .card:last-child {
-        margin-bottom: 0;
+    
+    &:active {
+        transform: scale(0.95);
     }
 }
+
+.carousel-track {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(13, 50, 77, 0.3);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+}
+
+.card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 2px solid variable.$color-primary;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(127, 90, 131, 0.05), rgba(13, 50, 77, 0.1));
+    transition: all 0.3s ease;
+    height: 100%;
+    
+    &:hover {
+        border-color: variable.$color-accent;
+        box-shadow: inset 0 0 0 1px variable.$color-accent, 0 8px 16px rgba(127, 90, 131, 0.15);
+    }
+    
+    img {
+        width: 45%;
+        height: auto;
+        min-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        
+        h4 {
+            font-family: variable.$font-bold;
+            font-size: 1.4rem;
+            color: variable.$color-title-text-secondary;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        p {
+            color: variable.$color-text-primary;
+            margin: 0 0 1rem 0;
+            line-height: 1.5;
+        }
+        
+        .card-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            background: variable.$color-primary;
+            color: variable.$color-accent;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+//Responsive
+@media screen and (max-width: 1000px) {
+    .projets__carousel {
+        flex-direction: column;
+    }
+    
+    .carousel-btn {
+        order: 2;
+        align-self: center;
+        margin-top: 1rem;
+    }
+    
+    .carousel-track {
+        order: 1;
+        width: 100%;
+    }
+    
+    .card {
+        flex-direction: column;
+        
+        img {
+            width: 100%;
+            height: 250px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+        gap: 1rem;
+        
+        h4 {
+            font-size: 1.2rem;
+        }
+        
+        img {
+            height: 200px;
+        }
+    }
+}
+
 
 //Expériences
 .experience__wrapper {

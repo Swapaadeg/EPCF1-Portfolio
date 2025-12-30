@@ -1,116 +1,134 @@
-//Message formulaire
+//=== FORMULAIRE DE CONTACT (Backend PHP) ===
 const formulaire = document.querySelector('#contactform');
 
-formulaire.addEventListener('submit', function(e) {
-e.preventDefault();
-
-formulaire.reset();
-
-
-const message = document.createElement('p');
-message.textContent = "Message envoyé avec succès!";
-message.style.color = '#7F5A83';
-message.style.marginTop = '10px';
-
-const bouton = formulaire.querySelector('#contactform .submit-btn');
-bouton.parentNode.appendChild(message)
-setTimeout(() => {
-    message.remove();
-  }, 3000);
-});
-
-
-//CAROUSSEL
-
-const carousel = document.querySelector('.carousel');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
-
-let index = 0;
-let visibleCards = 3;
-let cards;
-
-//fonction qui calcule la hauteur d'une card + marge
-function getCardHeight() {
-    const card = document.querySelector('.carousel .card');
-    if (!card) return 240;
-    const style = getComputedStyle(card);
-    const marginBottom = parseFloat(style.marginBottom);
-    return card.offsetHeight + marginBottom;
+if (formulaire) {
+    formulaire.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = formulaire.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Désactiver le bouton pendant l'envoi
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Envoi en cours...';
+        submitBtn.style.cursor = 'not-allowed';
+        
+        // Récupérer les données du formulaire
+        const formData = new FormData(formulaire);
+        
+        try {
+            const response = await fetch('send-email.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            // Créer et afficher le message de retour
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 8px;
+                text-align: center;
+                font-weight: 500;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            if (result.success) {
+                messageDiv.style.background = 'linear-gradient(135deg, rgba(127, 90, 131, 0.2), rgba(13, 50, 77, 0.2))';
+                messageDiv.style.color = '#7F5A83';
+                messageDiv.style.border = '2px solid #7F5A83';
+                messageDiv.innerHTML = `
+                    <strong>✓ Message envoyé avec succès !</strong><br>
+                    <small>Vous recevrez une confirmation par email.</small>
+                `;
+                formulaire.reset();
+            } else {
+                messageDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                messageDiv.style.color = '#dc3545';
+                messageDiv.style.border = '2px solid #dc3545';
+                messageDiv.innerHTML = `
+                    <strong>✗ Erreur lors de l'envoi</strong><br>
+                    <small>${result.message}</small>
+                `;
+            }
+            
+            // Supprimer l'ancien message s'il existe
+            const oldMessage = formulaire.querySelector('.form-message');
+            if (oldMessage) {
+                oldMessage.remove();
+            }
+            
+            messageDiv.classList.add('form-message');
+            submitBtn.parentElement.parentElement.appendChild(messageDiv);
+            
+            // Retirer le message après 5 secondes
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 5000);
+            
+        } catch (error) {
+            console.error('Erreur:', error);
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.style.cssText = `
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 8px;
+                background: rgba(255, 0, 0, 0.1);
+                color: #dc3545;
+                border: 2px solid #dc3545;
+                text-align: center;
+            `;
+            errorDiv.innerHTML = `
+                <strong>✗ Erreur de connexion</strong><br>
+                <small>Impossible de contacter le serveur. Veuillez réessayer.</small>
+            `;
+            errorDiv.classList.add('form-message');
+            
+            const oldMessage = formulaire.querySelector('.form-message');
+            if (oldMessage) oldMessage.remove();
+            
+            submitBtn.parentElement.parentElement.appendChild(errorDiv);
+            
+            setTimeout(() => errorDiv.remove(), 5000);
+        } finally {
+            // Réactiver le bouton
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            submitBtn.style.cursor = 'pointer';
+        }
+    });
 }
 
-//définit la hauteur du carrousel
-function setCarouselWrapperHeight() {
-    const wrapper = document.querySelector('.carousel__wrapper');
-    const card = document.querySelector('.carousel .card');
-    if (wrapper && card) {
-      const style = getComputedStyle(card);
-      const marginBottom = parseFloat(style.marginBottom);
-      const totalHeight = (card.offsetHeight + marginBottom) * visibleCards;
-      wrapper.style.height = `${totalHeight}px`;
+// Ajouter les animations CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-}
-
-//clone des cards
-function cloneCards() {
-    cards = document.querySelectorAll('.carousel .card');
-    const firstClones = [];
-    const lastClones = [];
-
-    for (let i = 0; i < visibleCards; i++) {
-      firstClones.push(cards[i].cloneNode(true));
-      lastClones.push(cards[cards.length - 1 - i].cloneNode(true));
+    @keyframes slideOut {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
     }
+`;
+document.head.appendChild(style);
 
-    firstClones.forEach(clone => carousel.appendChild(clone));
-    lastClones.reverse().forEach(clone => carousel.prepend(clone));
-
-    cards = document.querySelectorAll('.carousel .card');
-  }
-
-function resetToIndex(newIndex) {
-    const cardHeight = getCardHeight();
-    carousel.style.transition = 'none';
-    index = newIndex;
-    carousel.style.transform = `translateY(-${index * cardHeight}px)`;
-}
-
-function moveToIndex() {
-    const cardHeight = getCardHeight();
-    carousel.style.transition = 'transform 0.4s ease';
-    carousel.style.transform = `translateY(-${index * cardHeight}px)`;
-}
-
-function initCarousel() {
-    cloneCards();
-    setCarouselWrapperHeight();
-    index = visibleCards;
-    resetToIndex(index);
-}
-
-nextBtn.addEventListener('click', () => {
-    index++;
-    moveToIndex();
-
-    if (index === cards.length - visibleCards) {
-      setTimeout(() => {
-        resetToIndex(visibleCards);
-      }, 400);
-    }
-});
-
-prevBtn.addEventListener('click', () => {
-    index--;
-    moveToIndex();
-
-    if (index === 0) {
-      setTimeout(() => {
-        resetToIndex(cards.length - visibleCards * 2);
-      }, 400);
-    }
-});
-
-initCarousel();
 
 //MENU BURGER
 
